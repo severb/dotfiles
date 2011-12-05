@@ -96,9 +96,9 @@ set notimeout
 set nottimeout
 set autoread
 set dictionary=/usr/share/dict/words
-set undodir=~/.vim/tmp/undo//     " undo files
-set backupdir=~/.vim/tmp/backup// " backups
-set directory=~/.vim/tmp/swap//   " swap files
+set undodir=~/.vim/tmp/undo/     " undo files
+set backupdir=~/.vim/tmp/backup/ " backups
+set directory=~/.vim/tmp/swap/   " swap files
 syntax on
 filetype on
 filetype plugin on
