@@ -55,10 +55,6 @@ inoremap <F1> <nop>
 
 " Add support for 256 color terminal
 set t_Co=256
-" This adds persistent undo to vim.
-set undofile
-set undoreload=10000
-set colorcolumn=80
 set nocompatible
 set backup
 set noswapfile
@@ -84,7 +80,6 @@ set showcmd
 set nocursorline
 set ttyfast
 set nonumber
-set norelativenumber
 set cpoptions+=J " Sentence followed by two spaces.
 set lazyredraw
 set splitbelow
@@ -93,7 +88,6 @@ set notimeout
 set nottimeout
 set autoread
 set dictionary=/usr/share/dict/words
-set undodir=~/.vim/tmp/undo/     " undo files
 set backupdir=~/.vim/tmp/backup/ " backups
 set directory=~/.vim/tmp/swap/   " swap files
 syntax on
@@ -132,7 +126,10 @@ set linespace=0 " No empty spaces between the rows.
 set list " Show whitespaces so I can remove them, doo'h!
 set listchars=tab:·\ ,eol:¬,trail:»
 set matchtime=3 " Blinks the matching bracket.
-set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v] " Don't ask!
+set statusline=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+set statusline+=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v] " Don't ask!
 
 " }
 
