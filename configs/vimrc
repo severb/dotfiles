@@ -151,7 +151,7 @@ au BufRead,BufNewFile *.go set filetype=go
 
 " Extension configurations {
 
-let g:syntastic_auto_loc_list=1 " Auto open-close error window.
+let g:syntastic_auto_loc_list = 1 " Auto open-close error window.
 au BufNewFile,BufRead *.less set filetype=less
 
 " }
