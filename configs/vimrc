@@ -31,9 +31,6 @@ map <leader>fw :exec "vimgrep /\\(^\\\\|[^a-zA-Z0-9_]\\)".expand("<cword>")."\\(
 " Find the definition of the method/class under the cursor in python sources.
 map <leader>fd :exec "vimgrep /\\(def\\\\|class\\) ".expand("<cword>")."(/j ./**/*.py"<CR>:cw<CR><C-w>j
 
-" Ues ,a for quick ack.
-nnoremap <leader>a :Ack 
-
 
 " Automatically use Python like regex when searching.
 nnoremap / /\v
@@ -161,8 +158,6 @@ au BufRead,BufNewFile *.go set filetype=go
 " Extension configurations {
 
 let g:vimwiki_list = [{'path': '~/.dotfiles/wiki', 'path_html': '~/wikihtml/'}]
-let g:ackprg = "ack-grep -H --nocolor --nogroup --column"
-let g:pyflakes_use_quickfix = 0
 au BufNewFile,BufRead *.less set filetype=less
 
 " }
