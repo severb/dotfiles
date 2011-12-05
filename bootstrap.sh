@@ -2,7 +2,7 @@
 # To install the components run
 # wget -qO- https://github.com/severb/dotfiles/raw/master/bootstrap.sh | /bin/bash
 
-if [-d ~/.dotfiles ]; then
+if [ -d ~/.dotfiles ]; then
     cd ~/.dotfiles
     git pull
 else
