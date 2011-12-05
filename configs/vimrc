@@ -126,10 +126,7 @@ set linespace=0 " No empty spaces between the rows.
 set list " Show whitespaces so I can remove them, doo'h!
 set listchars=tab:·\ ,eol:¬,trail:»
 set matchtime=3 " Blinks the matching bracket.
-set statusline=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-set statusline+=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v] " Don't ask!
+set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v] " Don't ask!
 
 " }
 
@@ -154,7 +151,7 @@ au BufRead,BufNewFile *.go set filetype=go
 
 " Extension configurations {
 
-let g:vimwiki_list = [{'path': '~/.dotfiles/wiki', 'path_html': '~/wikihtml/'}]
+let g:syntastic_auto_loc_list=1 " Auto open-close error window.
 au BufNewFile,BufRead *.less set filetype=less
 
 " }
