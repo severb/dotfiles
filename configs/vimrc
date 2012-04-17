@@ -14,10 +14,8 @@ call pathogen#runtime_append_all_bundles()
 " I'm using Dvorak and , is a very handy mapleader.
 let mapleader = ","
 
-if exists(":Tabularize")
-    " Use ,b to format tables using Tabular.vim
-      nmap <Leader>b :Tabularize /\|<CR>
-endif
+" Use ,b to format tables using Tabular.vim
+nmap <Leader>b :Tabularize /\|<CR>
 
 " Use ,b to open Taglist
 nnoremap <leader>t :NERDTreeToggle<CR>
