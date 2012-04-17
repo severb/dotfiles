@@ -14,7 +14,12 @@ call pathogen#runtime_append_all_bundles()
 " I'm using Dvorak and , is a very handy mapleader.
 let mapleader = ","
 
-" Use ,t to open Taglist
+if exists(":Tabularize")
+    " Use ,b to format tables using Tabular.vim
+      nmap <Leader>b :Tabularize /\|<CR>
+endif
+
+" Use ,b to open Taglist
 nnoremap <leader>t :NERDTreeToggle<CR>
 
 " Use ,f to open FuzzyFinder
@@ -146,6 +151,9 @@ endif
 " }
 
 " Autocmds {
+
+" Cucumber
+autocmd BufNewFile,BufReadPost *.feature,*.story set syntax=cucumber
 
 " Set the correct filetype for go language files.
 au BufRead,BufNewFile *.go set filetype=go
