@@ -11,3 +11,7 @@ else
         ln -s "$cf" ~/.$(basename "$cf")
     done
 fi
+
+git submodule init
+git submodule update
+
