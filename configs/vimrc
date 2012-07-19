@@ -161,7 +161,8 @@ au BufRead,BufNewFile *.go set filetype=go
 " Extension configurations {
 
 let g:syntastic_auto_loc_list = 2 " Auto close error window but don't open.
-au BufNewFile,BufRead *.less set filetype=less
+let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeDirArrows=0 " Old school instead of arrows since putty is dumb
 
 " }
 
