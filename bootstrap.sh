@@ -6,8 +6,8 @@ if [ -d ~/.dotfiles ]; then
     git pull
 else
     git clone git://github.com/severb/dotfiles.git ~/.dotfiles/
-    for cf in ~/.dotfiles/configs/*; do
+    cd ~/.dotfiles
+    for cf in configs/*; do
         ln -s "$cf" ~/.$(basename "$cf")
     done
 fi
-

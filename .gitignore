@@ -1,2 +1,2 @@
-tmp/
-configs/vim/.*
+/configs/vim/tmp/*
+!_
