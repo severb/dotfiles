@@ -10,3 +10,6 @@
 [submodule "configs/vim/bundle/tabular"]
 	path = configs/vim/bundle/tabular
 	url = git://github.com/godlygeek/tabular.git
+[submodule "configs/vim/bundle/golang"]
+	path = configs/vim/bundle/golang
+	url = https://github.com/jnwhiteh/vim-golang.git
