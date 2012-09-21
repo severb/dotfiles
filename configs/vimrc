@@ -20,9 +20,6 @@ nmap <Leader>b :Tabularize /\|<CR>
 " Use ,b to open Taglist
 nnoremap <leader>t :NERDTreeToggle<CR>
 
-" Use ,f to open FuzzyFinder
-nnoremap <leader>f :FufFileWithCurrentBufferDir<CR>
-
 " Comment and uncomment lines of code with this search and replace expression.
 " This uses a positive lookahead. How cool is that!?
 noremap <leader># :s/^\([\t\ ]*[^\ \t#]\+\)\&/#\ /<cr>
