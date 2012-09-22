@@ -4,8 +4,19 @@
 
 " Loading {
 
-" Autoload from bundle
-call pathogen#runtime_append_all_bundles()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" }
+"
+" Bundles {
+
+Bundle 'vundle'
+Bundle 'molokai'
+Bundle 'fugitive.vim'
+Bundle 'Tabular'
+Bundle 'Syntastic'
+Bundle 'The-NERD-tree'
 
 " }
 
@@ -160,26 +171,5 @@ au BufRead,BufNewFile *.go set filetype=go
 let g:syntastic_auto_loc_list = 2 " Auto close error window but don't open.
 let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeDirArrows=0 " Old school instead of arrows since putty is dumb
-
-" }
-
-" Shell {
-
-function! s:ExecuteInShell(command) " {{{
-    let command = join(map(split(a:command), 'expand(v:val)'))
-    let winnr = bufwinnr('^' . command . '$')
-    silent! execute  winnr < 0 ? 'botright vnew ' . fnameescape(command) : winnr . 'wincmd w'
-    setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile nowrap nonumber
-    echo 'Execute ' . command . '...'
-    silent! execute 'silent %!'. command
-    silent! redraw
-    silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd w'''
-    silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . command . ''')<CR>:AnsiEsc<CR>'
-    silent! execute 'nnoremap <silent> <buffer> q :q<CR>'
-    silent! execute 'AnsiEsc'
-    echo 'Shell command ' . command . ' executed.'
-endfunction " }}}
-command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
-nnoremap <leader>! :Shell 
 
 " }

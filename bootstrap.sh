@@ -10,7 +10,3 @@ else
         ln -s "$cf" ~/.$(basename "$cf")
     done
 fi
-
-cd ~/.dotfiles
-git submodule init
-git submodule update
