@@ -1,2 +1,3 @@
 /configs/vim/tmp/*
 !_
+/configs/vim/bundle/*
