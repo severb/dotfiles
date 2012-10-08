@@ -1,6 +1,9 @@
-" vim: foldmarker={,} foldlevel=0 foldmethod=marker spell
+" Modeline {
 
+" vim: foldmarker={,} foldlevel=0 foldmethod=marker spell
 " Author (more or less) Sever Banesiu <banesiu.sever@gmail.com>
+
+" }
 
 " Loading {
 
@@ -104,6 +107,7 @@ set backupdir=~/.vim/tmp/backup/ " backups
 set directory=~/.vim/tmp/swap/   " swap files
 syntax on
 filetype on
+filetype indent on
 filetype plugin on
 filetype plugin indent on
 compiler pyunit
@@ -141,8 +145,6 @@ set listchars=tab:·\ ,eol:¬,trail:»
 set matchtime=3 " Blinks the matching bracket.
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v] " Don't ask!
 
-autocmd BufEnter * :syntax sync fromstart " Slower but better syntax highlight
-
 
 " }
 
@@ -160,11 +162,8 @@ endif
 
 " Autocmds {
 
-" Cucumber
-autocmd BufNewFile,BufReadPost *.feature,*.story set syntax=cucumber
-
-" Set the correct filetype for go language files.
-au BufRead,BufNewFile *.go set filetype=go
+autocmd BufEnter * :syntax sync fromstart " Slower but better syntax highlight
+au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
 
 " }
 
@@ -184,5 +183,7 @@ let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeDirArrows=0 " Old school instead of arrows since putty is dumb
 
 let g:Powerline_symbols = 'fancy'
+
+let python_highlight_all=1
 
 " }
