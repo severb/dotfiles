@@ -184,6 +184,4 @@ let NERDTreeDirArrows=0 " Old school instead of arrows since putty is dumb
 
 let g:Powerline_symbols = 'fancy'
 
-let python_highlight_all=1
-
 " }
