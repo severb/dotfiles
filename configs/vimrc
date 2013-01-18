@@ -29,6 +29,11 @@ Bundle 'Lokaltog/vim-powerline.git'
 " I'm using Dvorak and , is a very handy mapleader.
 let mapleader = ","
 
+
+" In the chrome terminal thingy CTRL + w doesn't work, so switching buffers is
+" hell
+nnoremap <Leader>w <C-w>
+
 " Use ,b to format tables using Tabular.vim
 nmap <Leader>b :Tabularize /\|<CR>
 
