@@ -14,6 +14,10 @@ call vundle#rc()
 "
 " Bundles {
 
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+Bundle 'airblade/vim-gitgutter.git'
 Bundle 'vundle'
 Bundle 'fugitive.vim'
 Bundle 'Tabular'
@@ -21,6 +25,9 @@ Bundle 'scrooloose/syntastic.git'
 Bundle 'The-NERD-tree'
 Bundle 'chriskempson/tomorrow-theme.git', {'rtp': 'vim/'}
 Bundle 'Lokaltog/vim-powerline.git'
+Bundle 'vim-coffee-script'
+
+filetype plugin indent on     " required!
 
 " }
 
