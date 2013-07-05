@@ -14,6 +14,7 @@ call vundle#rc()
 "
 " Bundles {
 
+Bundle 'Gundo'
 Bundle 'vundle'
 Bundle 'fugitive.vim'
 Bundle 'Tabular'
@@ -21,6 +22,7 @@ Bundle 'scrooloose/syntastic.git'
 Bundle 'The-NERD-tree'
 Bundle 'chriskempson/tomorrow-theme.git', {'rtp': 'vim/'}
 Bundle 'Lokaltog/vim-powerline.git'
+Bundle 'Tagbar'
 
 " }
 
@@ -68,6 +70,8 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<cr>
 
 noremap  <F1> <nop>
 inoremap <F1> <nop>
+
+nnoremap <silent> <F1> :TagbarToggle<CR>
 
 " }
 
