@@ -14,10 +14,7 @@ call vundle#rc()
 "
 " Bundles {
 
-set nocompatible               " be iMproved
-filetype off                   " required!
-
-Bundle 'airblade/vim-gitgutter.git'
+Bundle 'Gundo'
 Bundle 'vundle'
 Bundle 'fugitive.vim'
 Bundle 'Tabular'
@@ -25,10 +22,8 @@ Bundle 'scrooloose/syntastic.git'
 Bundle 'The-NERD-tree'
 Bundle 'chriskempson/tomorrow-theme.git', {'rtp': 'vim/'}
 Bundle 'Lokaltog/vim-powerline.git'
-Bundle 'vim-coffee-script'
 Bundle 'rainbow_parentheses.vim'
-
-filetype plugin indent on     " required!
+Bundle 'Tagbar'
 
 " }
 
@@ -77,6 +72,8 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<cr>
 noremap  <F1> <nop>
 inoremap <F1> <nop>
 
+nnoremap <silent> <F1> :TagbarToggle<CR>
+
 " }
 
 " Basic {
@@ -91,6 +88,7 @@ set incsearch
 set ignorecase
 set nowrap
 set foldenable
+set foldmethod=indent
 set helplang=En
 set history=1024
 set undolevels=1024 " use all the undos ever.
@@ -193,7 +191,6 @@ let g:syntastic_style_warning_symbol='>'
 
 
 let NERDTreeIgnore = ['\.pyc$']
-let NERDTreeDirArrows=0 " Old school instead of arrows since putty is dumb
 
 let g:Powerline_symbols = 'fancy'
 
