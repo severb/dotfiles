@@ -26,6 +26,7 @@ Bundle 'The-NERD-tree'
 Bundle 'chriskempson/tomorrow-theme.git', {'rtp': 'vim/'}
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'vim-coffee-script'
+Bundle 'rainbow_parentheses.vim'
 
 filetype plugin indent on     " required!
 
@@ -195,5 +196,11 @@ let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeDirArrows=0 " Old school instead of arrows since putty is dumb
 
 let g:Powerline_symbols = 'fancy'
+
+" Make sure parantheses are always colored
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 " }
