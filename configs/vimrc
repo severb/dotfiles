@@ -24,6 +24,7 @@ Bundle 'chriskempson/tomorrow-theme.git', {'rtp': 'vim/'}
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'rainbow_parentheses.vim'
 Bundle 'Tagbar'
+Bundle 'davidhalter/jedi-vim.git'
 
 " }
 
@@ -199,5 +200,8 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#popup_on_dot = 0
 
 " }
