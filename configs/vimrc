@@ -190,4 +190,8 @@ au Syntax * RainbowParenthesesLoadBraces
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
+" Set focus when opening tagbar opens
+let g:tagbar_autofocus = 1
+
+
 " }
