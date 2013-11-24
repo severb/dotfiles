@@ -16,16 +16,15 @@ call vundle#rc()
 
 Bundle 'Gundo'
 Bundle 'vundle'
-Bundle 'fugitive.vim'
 Bundle 'Tabular'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'The-NERD-tree'
 Bundle 'chriskempson/tomorrow-theme.git', {'rtp': 'vim/'}
-Bundle 'Lokaltog/vim-powerline.git'
+Bundle 'bling/vim-airline'
 Bundle 'rainbow_parentheses.vim'
 Bundle 'Tagbar'
-Bundle 'davidhalter/jedi-vim.git'
 Bundle 'fisadev/vim-isort'
+Bundle 'kien/ctrlp.vim'
 
 " }
 
@@ -34,16 +33,14 @@ Bundle 'fisadev/vim-isort'
 " I'm using Dvorak and , is a very handy mapleader.
 let mapleader = ","
 
-
-" In the chrome terminal thingy CTRL + w doesn't work, so switching buffers is
-" hell
-nnoremap <Leader>w <C-w>
-
 " Use ,b to format tables using Tabular.vim
 nmap <Leader>b :Tabularize /\|<CR>
 
-" Use ,b to open Taglist
+" Use ,t to open NerdTree
 nnoremap <leader>t :NERDTreeToggle<CR>
+
+" Use ,t to open NerdTree
+nnoremap <leader>g :GundoToggle<CR>
 
 " Comment and uncomment lines of code with this search and replace expression.
 " This uses a positive lookahead. How cool is that!?
@@ -51,22 +48,12 @@ noremap <leader># :s/^\([\t\ ]*[^\ \t#]\+\)\&/#\ /<cr>
 " And here we replace by reusing a group.
 noremap <leader>3 :s/^\([\t\ ]*\)#\ \?/\1/<cr>
 
-" Find the word under the cursor in subdirs files using the regex: /\(^\|[^a-zA-Z0-9_]\)word\([^a-zA-Z0-9_]\|$\)/
-map <leader>fw :exec "vimgrep /\\(^\\\\|[^a-zA-Z0-9_]\\)".expand("<cword>")."\\([^a-zA-Z0-9_]\\\\|$\\)/j ./**/*.\\(py\\\\\\|c\\\\\\|java\\)"<CR>:cw<CR><C-w>j
-" Find the definition of the method/class under the cursor in python sources.
-map <leader>fd :exec "vimgrep /\\(def\\\\|class\\) ".expand("<cword>")."(/j ./**/*.py"<CR>:cw<CR><C-w>j
-
-
 " Automatically use Python like regex when searching.
 nnoremap / /\v
 vnoremap / /\v
 
 " Use ,<space> to clear search highlight.
 nnoremap <leader><space> :noh<cr>
-
-" Use <tab> to move between bracket pairs.
-nnoremap <tab> %
-vnoremap <tab> %
 
 " Use ,W to remove tailing spaces.
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<cr>
@@ -98,7 +85,7 @@ set background=dark
 set hlsearch " Don't keep the search results highlighted. I hate that.
 set title
 set shiftwidth=4
-set expandtab
+" set expandtab let tabs be tabs
 set tabstop=8
 set encoding=utf-8
 set modelines=0
@@ -168,7 +155,7 @@ if has("gui_running")
 	" There are a bunch of options here, I don't want most of them.
 	" This hides everything uses simple dialogues as opposed to pop-ups and uses GUI tabs for tabs.
 	set guioptions=ce
-	highlight SpellBad term=underline gui=undercurl guisp=Orange 
+	highlight SpellBad term=underline gui=undercurl guisp=Orange
 endif
 
 " }
@@ -194,15 +181,13 @@ let g:syntastic_style_warning_symbol='>'
 
 let NERDTreeIgnore = ['\.pyc$']
 
-let g:Powerline_symbols = 'fancy'
-
 " Make sure parantheses are always colored
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#popup_on_dot = 0
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " }
