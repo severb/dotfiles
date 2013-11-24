@@ -25,6 +25,7 @@ Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'rainbow_parentheses.vim'
 Bundle 'Tagbar'
 Bundle 'davidhalter/jedi-vim.git'
+Bundle 'fisadev/vim-isort'
 
 " }
 
