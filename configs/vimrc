@@ -85,7 +85,7 @@ set background=dark
 set hlsearch " Don't keep the search results highlighted. I hate that.
 set title
 set shiftwidth=4
-" set expandtab let tabs be tabs
+set expandtab
 set tabstop=8
 set encoding=utf-8
 set modelines=0
