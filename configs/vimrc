@@ -7,24 +7,28 @@
 
 " Loading {
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
 
-" }
-"
-" Bundles {
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+call vundle#begin('~/.vim/vundleplugins/')
 
-Bundle 'Gundo'
-Bundle 'vundle'
-Bundle 'Tabular'
-Bundle 'scrooloose/syntastic.git'
-Bundle 'The-NERD-tree'
-Bundle 'chriskempson/tomorrow-theme.git', {'rtp': 'vim/'}
-Bundle 'bling/vim-airline'
-Bundle 'rainbow_parentheses.vim'
-Bundle 'Tagbar'
-Bundle 'fisadev/vim-isort'
-Bundle 'kien/ctrlp.vim'
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'scrooloose/syntastic'
+Plugin 'bling/vim-airline'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'fisadev/vim-isort'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Lokaltog/vim-easymotion'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 
 " }
 
@@ -32,15 +36,6 @@ Bundle 'kien/ctrlp.vim'
 
 " I'm using Dvorak and , is a very handy mapleader.
 let mapleader = ","
-
-" Use ,b to format tables using Tabular.vim
-nmap <Leader>b :Tabularize /\|<CR>
-
-" Use ,t to open NerdTree
-nnoremap <leader>t :NERDTreeToggle<CR>
-
-" Use ,t to open NerdTree
-nnoremap <leader>g :GundoToggle<CR>
 
 " Comment and uncomment lines of code with this search and replace expression.
 " This uses a positive lookahead. How cool is that!?
@@ -60,8 +55,6 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<cr>
 
 noremap  <F1> <nop>
 inoremap <F1> <nop>
-
-nnoremap <silent> <F1> :TagbarToggle<CR>
 
 " }
 
@@ -172,14 +165,11 @@ au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
 let g:syntastic_auto_loc_list = 2 " Auto close error window but don't open.
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1 " Put errors on left side
-
 let g:syntastic_error_symbol='★'
 let g:syntastic_style_error_symbol='>'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_style_warning_symbol='>'
 
-
-let NERDTreeIgnore = ['\.pyc$']
 
 " Make sure parantheses are always colored
 au VimEnter * RainbowParenthesesToggle
@@ -190,10 +180,6 @@ au Syntax * RainbowParenthesesLoadBraces
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-" Set focus when opening tagbar opens
-let g:tagbar_autofocus = 1
-
 let g:ctrlp_cmd = 'CtrlPMixed'
-
 
 " }
