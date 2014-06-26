@@ -24,6 +24,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'fisadev/vim-isort'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'davidhalter/jedi-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -155,6 +156,7 @@ endif
 
 " Autocmds {
 
+autocmd FileType python setlocal completeopt-=preview
 autocmd BufEnter * :syntax sync fromstart " Slower but better syntax highlight
 au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
 
