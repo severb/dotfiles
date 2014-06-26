@@ -193,5 +193,7 @@ let g:airline#extensions#tabline#enabled = 1
 " Set focus when opening tagbar opens
 let g:tagbar_autofocus = 1
 
+let g:ctrlp_cmd = 'CtrlPMixed'
+
 
 " }
