@@ -25,6 +25,7 @@ Plugin 'fisadev/vim-isort'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'hdima/python-syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -105,7 +106,9 @@ filetype indent on
 filetype plugin on
 filetype plugin indent on
 compiler pyunit
-colors Tomorrow-Night-Eighties
+" colors Tomorrow-Night-Eighties
+" colors codeschool
+colors railscasts
 set colorcolumn=80
 
 " }
@@ -129,6 +132,9 @@ set wildmode=list:full " How to display the file list when searching.
 " No damn visual, audio or error bell.
 set noerrorbells
 set novisualbell
+" Kill the bells with fire.
+autocmd GUIEnter * set vb t_vb=
+autocmd VimEnter * set vb t_vb=
 set vb t_vb=".
 set clipboard+=unnamed " Share clipboard with Windows. Aww...
 set iskeyword+=_ " Underscore is part of a word in my world.
@@ -139,16 +145,16 @@ set listchars=tab:·\ ,eol:¬,trail:»
 set matchtime=3 " Blinks the matching bracket.
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v] " Don't ask!
 
-
 " }
 
 " GUI {
 
+" Wont work if vim is started from console and then :gui
 if has("gui_running")
-	"set guifont=Monaco:h9:cANSI
+	set guifont=Fantasque\ Sans\ Mono\ 14
 	" There are a bunch of options here, I don't want most of them.
-	" This hides everything uses simple dialogues as opposed to pop-ups and uses GUI tabs for tabs.
-	set guioptions=ce
+	" This hides everything uses simple dialogues as opposed to pop-ups.
+	set guioptions=
 	highlight SpellBad term=underline gui=undercurl guisp=Orange
 endif
 
@@ -180,5 +186,6 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 let g:ctrlp_cmd = 'CtrlPMixed'
+let python_highlight_all = 1
 
 " }
