@@ -20,7 +20,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'fisadev/vim-isort'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
@@ -106,9 +105,11 @@ filetype indent on
 filetype plugin on
 filetype plugin indent on
 compiler pyunit
-" colors Tomorrow-Night-Eighties
-" colors codeschool
-colors railscasts
+colors jellybeans
+hi Normal ctermbg=NONE
+hi NonText ctermbg=NONE
+hi SpecialKey ctermbg=NONE
+hi ColorColumn ctermbg=0
 set colorcolumn=80
 
 " }
@@ -176,16 +177,12 @@ let g:syntastic_enable_signs=1 " Put errors on left side
 let g:syntastic_python_checkers=['python', 'frosted']
 
 
-" Make sure parantheses are always colored
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 let g:ctrlp_cmd = 'CtrlPMixed'
 let python_highlight_all = 1
+
+let g:airline_theme = 'bubblegum'
 
 " }
