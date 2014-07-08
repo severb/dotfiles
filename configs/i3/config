@@ -157,7 +157,6 @@ bar {
 
 # Custom
 
-hide_edge_borders vertical
 focus_follows_mouse no
 workspace_auto_back_and_forth yes
 
@@ -165,14 +164,26 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 
-# Autostart
-
-exec --no-startup-id unity-settings-daemon
-exec --no-startup-id i3-msg 'workspace 2: dev; exec gnome-terminal; workspace 1: www; exec chromium-browser;'
-exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
-bindsym $mod+Shift+o exec "gnome-screensaver-command --lock "
-
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -- -5% #decrease sound volume
 bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle # mute sound
+
+set $mode_system System (l) lock, (x) logout
+mode "$mode_system" {
+    bindsym l exec --no-startup-id "gnome-screensaver-command --lock", mode "default"
+    bindsym x exec --no-startup-id i3-msg exit, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Escape mode "$mode_system"
+
+
+# Autostart
+
+exec --no-startup-id unity-settings-daemon
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id indicator-cpufreq
+exec --no-startup-id indicator-multiload

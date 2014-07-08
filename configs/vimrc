@@ -145,6 +145,7 @@ set list " Show whitespaces so I can remove them, doo'h!
 set listchars=tab:·\ ,eol:¬,trail:»
 set matchtime=3 " Blinks the matching bracket.
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v] " Don't ask!
+set shell=bash
 
 " }
 
