@@ -7,6 +7,8 @@
 
 " Loading {
 
+set nocompatible
+filetype off
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -24,7 +26,8 @@ Plugin 'fisadev/vim-isort'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'davidhalter/jedi-vim'
-Plugin 'hdima/python-syntax'
+Plugin 'gerw/vim-HiLinkTrace'
+Plugin 'severb/monoacc'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -66,7 +69,6 @@ set t_Co=256
 set nocompatible
 set backup
 set noswapfile
-set hlsearch
 set incsearch
 set ignorecase
 set nowrap
@@ -86,7 +88,7 @@ set modelines=0
 set autoindent
 set showmode
 set showcmd
-set nocursorline
+set cursorline
 set ttyfast
 set nonumber
 set cpoptions+=J " Sentence followed by two spaces.
@@ -105,7 +107,7 @@ filetype indent on
 filetype plugin on
 filetype plugin indent on
 compiler pyunit
-colors jellybeans
+colors monoacc
 "hi Normal ctermbg=NONE
 "hi NonText ctermbg=NONE
 "hi SpecialKey ctermbg=NONE
@@ -175,7 +177,7 @@ au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
 let g:syntastic_auto_loc_list = 2 " Auto close error window but don't open.
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1 " Put errors on left side
-let g:syntastic_python_checkers=['python', 'frosted']
+let g:syntastic_python_checkers=['python', 'pylint']
 
 
 let g:airline_powerline_fonts = 1
