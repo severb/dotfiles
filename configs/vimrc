@@ -90,7 +90,7 @@ set showmode
 set showcmd
 set cursorline
 set ttyfast
-set nonumber
+set number
 set cpoptions+=J " Sentence followed by two spaces.
 set lazyredraw
 set splitbelow
