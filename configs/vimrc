@@ -25,7 +25,6 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'fisadev/vim-isort'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'gerw/vim-HiLinkTrace'
 Plugin 'severb/monoacc'
 
