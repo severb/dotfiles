@@ -27,7 +27,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'gerw/vim-HiLinkTrace'
 Plugin 'severb/monoacc'
-Plugin 'ryanss/vim-hackernews'
+Plugin 'fatih/vim-go'
+Plugin 'Tagbar'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -59,6 +60,19 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<cr>
 
 noremap  <F1> <nop>
 inoremap <F1> <nop>
+
+
+" Go shortcuts
+au FileType go nmap <leader>gr <Plug>(go-run)
+au FileType go nmap <leader>gb <Plug>(go-build)
+au FileType go nmap <leader>gt <Plug>(go-test)
+au FileType go nmap <leader>gc <Plug>(go-coverage)
+" gd is enabled by default, go to definition in the current buffer
+au FileType go nmap <Leader>gv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>g? <Plug>(go-doc-vertical)
+
+au FileType go nmap <Leader>gi <Plug>(go-implements)
+au FileType go nmap <Leader>g/ <Plug>(go-rename)
 
 " }
 
