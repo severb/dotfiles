@@ -19,8 +19,8 @@ call vundle#begin('~/.vim/vundleplugins/')
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'scrooloose/syntastic'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'fisadev/vim-isort'
 Plugin 'kien/ctrlp.vim'
@@ -29,6 +29,7 @@ Plugin 'gerw/vim-HiLinkTrace'
 Plugin 'severb/monoacc'
 Plugin 'fatih/vim-go'
 Plugin 'Tagbar'
+Plugin 'Syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -182,7 +183,7 @@ endif
 
 autocmd FileType python setlocal completeopt-=preview
 autocmd BufEnter * :syntax sync fromstart " Slower but better syntax highlight
-au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
+au BufNewFile *.go,*.py,*.pyw,*.c,*.h set fileformat=unix
 
 " }
 
@@ -192,8 +193,7 @@ let g:syntastic_auto_loc_list = 2 " Auto close error window but don't open.
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1 " Put errors on left side
 let g:syntastic_python_checkers=['python', 'pylint']
-
-let g:jedi#completions_enabled = 0
+let g:syntastic_go_checkers=['go', 'gofmt', 'golint', 'govet', 'errcheck']
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -202,5 +202,14 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 let python_highlight_all = 1
 
 let g:airline_theme = 'bubblegum'
+
+let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+let g:go_fmt_command = "goimports"
 
 " }
