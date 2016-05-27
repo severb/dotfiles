@@ -30,6 +30,7 @@ Plugin 'severb/monoacc'
 Plugin 'fatih/vim-go'
 Plugin 'Tagbar'
 Plugin 'Syntastic'
+Plugin 'airblade/vim-gitgutter'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -49,6 +50,8 @@ noremap <leader># :s/^\([\t\ ]*[^\ \t#]\+\)\&/#\ /<cr>
 " And here we replace by reusing a group.
 noremap <leader>3 :s/^\([\t\ ]*\)#\ \?/\1/<cr>
 
+noremap <leader>s :SyntasticCheck<cr>
+
 " Automatically use Python like regex when searching.
 nnoremap / /\v
 vnoremap / /\v
@@ -61,6 +64,9 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<cr>
 
 noremap  <F1> <nop>
 inoremap <F1> <nop>
+
+" Open files in location list in vertical splits
+autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
 
 
 " Go shortcuts
@@ -194,6 +200,8 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1 " Put errors on left side
 let g:syntastic_python_checkers=['python', 'pylint']
 let g:syntastic_go_checkers=['go', 'gofmt', 'golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
