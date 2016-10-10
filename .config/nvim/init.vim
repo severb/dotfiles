@@ -45,6 +45,9 @@ set vb t_vb=".
 " Auto-resize splits on window resize
 au VimResized * exe "normal! \<c-w>="
 
+" Use system clipboard
+set clipboard=unnamed
+
 
 " Plugin cfg
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
