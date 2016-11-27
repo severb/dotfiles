@@ -13,6 +13,8 @@ Plug 'mhinz/vim-grepper'
 Plug 'janko-m/vim-test'
 Plug 'unblevable/quick-scope'
 Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch.vim'
+Plug 'majutsushi/tagbar'
 call plug#end()
 
 
