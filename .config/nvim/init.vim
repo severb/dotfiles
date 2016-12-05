@@ -13,8 +13,8 @@ Plug 'mhinz/vim-grepper'
 Plug 'janko-m/vim-test'
 Plug 'unblevable/quick-scope'
 Plug 'haya14busa/incsearch.vim'
-Plug 'haya14busa/incsearch.vim'
 Plug 'majutsushi/tagbar'
+Plug 'gerw/vim-HiLinkTrace'
 call plug#end()
 
 
@@ -66,6 +66,17 @@ let g:qs_second_occurrence_highlight_color = 252
 let g:incsearch#auto_nohlsearch = 1
 " search uses Python regex like syntax
 let g:incsearch#magic = '\v' " very magic
+
+
+
+let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_build_constraints = 1
+
+
 
 " Key bindings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
