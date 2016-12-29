@@ -1,6 +1,7 @@
 " Plugin loading
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
+Plug '/usr/local/opt/fzf'
 Plug 'severb/monoacc'
 Plug 'neomake/neomake'
 Plug 'fatih/vim-go'
@@ -63,20 +64,16 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 let g:qs_first_occurrence_highlight_color = 105
 let g:qs_second_occurrence_highlight_color = 252
 
-let g:incsearch#auto_nohlsearch = 1
 " search uses Python regex like syntax
 let g:incsearch#magic = '\v' " very magic
-
+let g:incsearch#auto_nohlsearch = 1
 
 
 let g:go_highlight_functions = 1
-" let g:go_highlight_methods = 1
-" let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
-" let g:go_highlight_operators = 1
-" let g:go_highlight_build_constraints = 1
 
-
+" use the same key to switch between greppers
+let g:grepper = { 'next_tool': '<leader>g' }
 
 " Key bindings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -103,3 +100,13 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
+
+
+" File search with FZF
+nnoremap <leader><space> :FZF<CR>
+
+" Grepper
+nnoremap <leader>g :Grepper<cr>
+
+" Tagbar
+nnoremap <leader>t :TagbarToggle<cr>

@@ -1,0 +1,6 @@
+set editing-mode vi
+
+set keymap vi-insert
+Control-l: clear-screen
+Control-p: history-search-backward
+Control-n: history-search-forward
