@@ -89,3 +89,4 @@ unalias cp
 unalias mv
 
 {figlet -f cosmic Meaww; fortune -s} | cowsay -f ~/.cat.cow -n | lolcat
+print

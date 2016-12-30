@@ -7,6 +7,7 @@ Plug 'neomake/neomake'
 Plug 'fatih/vim-go'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'Shougo/echodoc.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
@@ -58,6 +59,15 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = 'monochrome'
 
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#sources#go#package_dot = 1
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+" Prevent --INSERT-- from overriding func signature preview
+set cmdheight=2
+" Prevent the func signature to be displayed in the preview window 
+set completeopt="menu"
+
+
 
 " tunned for monoacc theme
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
