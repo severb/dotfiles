@@ -51,7 +51,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump vi-mode chucknorris common-aliases httpie)
+plugins=(autojump vi-mode common-aliases httpie)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,4 +88,4 @@ unalias rm
 unalias cp
 unalias mv
 
-chuck_cow
+{figlet -f cosmic Meaww; fortune -s} | cowsay -f ~/.cat.cow -n | lolcat
