@@ -33,3 +33,4 @@
     changes = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --date-order
     lola = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --date-order --all
     lolb = log --graph --simplify-by-decoration --pretty=format:'%d' --all
+    serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
