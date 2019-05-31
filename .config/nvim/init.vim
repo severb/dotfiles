@@ -64,7 +64,7 @@ function! SearchVisualSelectionWithAg() range
   let selection = getreg('"')
   call setreg('"', old_reg, old_regtype)
   let &clipboard = old_clipboard
-  execute 'Ag' selection
+  execute 'Rg' selection
 endfunction
 
 " FZF bindigs
