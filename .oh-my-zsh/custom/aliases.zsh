@@ -1,2 +1,2 @@
 alias g=git
-alias dotfiles='git --git-dir="/Users/sever/.dotfiles/" --work-tree="/Users/sever/"'
+alias dotfiles='git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
