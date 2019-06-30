@@ -7,7 +7,8 @@ Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 
-Plug '/usr/local/opt/fzf'
+Plug '/usr/local/opt/fzf' " OSX
+Plug '/usr/share/doc/fzf/examples/' " Ubuntu
 Plug 'junegunn/fzf.vim'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -44,7 +45,7 @@ let g:airline#extensions#tabline#show_splits=0		"don't show splits bar
 let g:airline#extensions#tabline#show_tab_type=0	"don't show the type (only tabs are enabled)
 let g:airline#extensions#tabline#show_close_button=0	"don't show close button
 
-" makes * and # work on visual mode
+" make * and # work in visual mode
 function! s:VSetSearch(cmdtype)
   let temp = @s
   norm! gv"sy
@@ -55,7 +56,7 @@ endfunction
 xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 
-function! SearchVisualSelectionWithAg() range
+function! SearchVisualSelectionWithRg() range
   let old_reg = getreg('"')
   let old_regtype = getregtype('"')
   let old_clipboard = &clipboard
@@ -80,7 +81,7 @@ nnoremap <silent> <leader>h :Helptags<CR>
 nnoremap <silent> <leader>H :Commands<CR>
 
 nnoremap <silent> <leader>* :execute 'Rg ' . expand('<cword>')<CR>
-vnoremap <silent> <leader>* :call SearchVisualSelectionWithAg()<CR>
+vnoremap <silent> <leader>* :call SearchVisualSelectionWithRg()<CR>
 nnoremap <silent> <leader>/ :execute 'Rg ' . input('Rg/')<CR>
 
 "preserve the flags when repeating substitutions
