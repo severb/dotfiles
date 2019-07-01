@@ -1,4 +1,7 @@
-export GOPATH=$HOME/go
+# Set Go path if unset
+if [ -z ${GOPATH+x} ]; then
+	export GOPATH=$HOME/go
+fi
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/go/bin:$GOPATH/bin
