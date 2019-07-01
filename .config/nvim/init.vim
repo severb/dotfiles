@@ -7,8 +7,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 
-Plug '/usr/local/opt/fzf' " OSX
-Plug '/usr/share/doc/fzf/examples/' " Ubuntu
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -84,6 +83,14 @@ nnoremap <silent> <leader>* :execute 'Rg ' . expand('<cword>')<CR>
 vnoremap <silent> <leader>* :call SearchVisualSelectionWithRg()<CR>
 nnoremap <silent> <leader>/ :execute 'Rg ' . input('Rg/')<CR>
 
+" show fullscreen preview for files
+command! -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), 1)
+"
+" show fullscreen preview for git files
+command! -nargs=? -complete=dir GFiles
+  \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), 1)
+
 "preserve the flags when repeating substitutions
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
@@ -91,3 +98,13 @@ xnoremap & :&&<CR>
 if executable("rg")
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 endif
+
+let g:go_auto_type_info = 1
+let g:go_updatetime = 100
+let g:go_metalinter_autosave = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
