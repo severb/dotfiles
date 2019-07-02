@@ -99,8 +99,6 @@ if executable("rg")
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 endif
 
-let g:go_auto_type_info = 1
-let g:go_updatetime = 100
 let g:go_metalinter_autosave = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_functions = 1
