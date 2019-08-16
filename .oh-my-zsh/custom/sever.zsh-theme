@@ -46,4 +46,4 @@ add-zsh-hook precmd run_vcs_info
 # PROMPT
 setopt prompt_subst
 PROMPT='${vcs_info_msg_0_}%B%1//>%b '
-RPROMPT='%~ %n@%M ?=%? ::%j %T'
+RPROMPT='%~ %n@%F{red}%M%f ?=%? ::%j %T'
