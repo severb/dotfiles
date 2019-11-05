@@ -126,7 +126,9 @@ let g:LanguageClient_serverCommands = {
 augroup LanguageClient_config
   autocmd!
     autocmd User LanguageClientStarted setlocal signcolumn=yes
+    autocmd User LanguageClientStarted setlocal formatexpr=LanguageClient#textDocument_rangeFormatting()
     autocmd User LanguageClientStopped setlocal signcolumn=auto
+    autocmd User LanguageClientStopped setlocal formatexpr=""
 augroup END
 let g:LanguageClient_useVirtualText = 1
 let g:LanguageClient_completionPreferTextEdit = 1
