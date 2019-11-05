@@ -12,6 +12,13 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+Plug 'majutsushi/tagbar'
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
 call plug#end()
 
 let mapleader = " "
@@ -32,6 +39,7 @@ set hidden	"don't warn if a buffer has changes before becomming hidden
 set cursorline	"highlight current line
 set ignorecase	"ignore case in search (used w/ smartcase)
 set smartcase	"case sensitive search when uppercase chars are used
+set nowrap	"don't wrap lines
 
 let g:netrw_liststyle=3	"list tree style
 let g:netrw_banner=0	"disable top banner
@@ -99,6 +107,7 @@ if executable("rg")
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 endif
 
+let g:go_metalinter_command = "golangci-lint"
 let g:go_metalinter_autosave = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_functions = 1
@@ -106,3 +115,19 @@ let g:go_highlight_function_parameters = 1
 let g:go_highlight_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'c': ['clangd-8'],
+    \ 'cpp': ['clangd-8'],
+    \ }
+
+augroup LanguageClient_config
+  autocmd!
+    autocmd User LanguageClientStarted setlocal signcolumn=yes
+    autocmd User LanguageClientStopped setlocal signcolumn=auto
+augroup END
+let g:LanguageClient_useVirtualText = 1
+let g:LanguageClient_completionPreferTextEdit = 1
+let g:LanguageClient_hoverPreview = "Always"
+nnoremap K :call LanguageClient_contextMenu()<CR>

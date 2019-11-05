@@ -28,6 +28,7 @@
 
 [core]
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	editor = nvim
 
 [alias]
     changes = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --date-order

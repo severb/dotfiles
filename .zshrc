@@ -4,7 +4,9 @@ if [ -z ${GOPATH+x} ]; then
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/go/bin:$GOPATH/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$GOPATH/bin:$HOME/.cargo/bin
+
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -67,9 +69,13 @@ ZSH_THEME="sever"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump vi-mode common-aliases httpie gitfast fzf)
+plugins=(autojump vi-mode common-aliases httpie gitfast)
 
 source $ZSH/oh-my-zsh.sh
+
+# TODO: add fzf to the plugin list after
+# https://github.com/robbyrussell/oh-my-zsh/pull/8001/files lands
+source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 # User configuration
 
@@ -103,3 +109,5 @@ source $ZSH/oh-my-zsh.sh
 unalias rm
 unalias cp
 unalias mv
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
