@@ -32,13 +32,15 @@ let g:onedark_terminal_italics = 1
 " colorscheme OceanicNext
 colorscheme onedark
 
-set splitright  "open vertical splits on the right
-set splitbelow  "open horizontal splits below
-set hidden      "don't warn if a buffer has changes before becomming hidden
-set cursorline  "highlight current line
-set ignorecase  "ignore case in search (used w/ smartcase)
-set smartcase   "case sensitive search when uppercase chars are used
-set nowrap      "don't wrap lines
+set splitright            "open vertical splits on the right
+set splitbelow            "open horizontal splits below
+set hidden                "don't warn if a buffer has changes before becomming hidden
+set cursorline            "highlight current line
+set ignorecase            "ignore case in search (used w/ smartcase)
+set smartcase             "case sensitive search when uppercase chars are used
+set nowrap                "don't wrap lines
+set clipboard=unnamedplus "copy to CLIPBOARD
+set mouse=a               "enable mouse in all modes
 
 let g:netrw_liststyle=3 "list tree style
 let g:netrw_banner=0    "disable top banner
