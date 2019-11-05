@@ -34,24 +34,24 @@ let g:onedark_terminal_italics = 1
 " colorscheme OceanicNext
 colorscheme onedark
 
-set splitright	"open vertical splits on the right
-set splitbelow	"open horizontal splits below
-set hidden	"don't warn if a buffer has changes before becomming hidden
-set cursorline	"highlight current line
-set ignorecase	"ignore case in search (used w/ smartcase)
-set smartcase	"case sensitive search when uppercase chars are used
-set nowrap	"don't wrap lines
+set splitright  "open vertical splits on the right
+set splitbelow  "open horizontal splits below
+set hidden      "don't warn if a buffer has changes before becomming hidden
+set cursorline  "highlight current line
+set ignorecase  "ignore case in search (used w/ smartcase)
+set smartcase   "case sensitive search when uppercase chars are used
+set nowrap      "don't wrap lines
 
-let g:netrw_liststyle=3	"list tree style
-let g:netrw_banner=0	"disable top banner
+let g:netrw_liststyle=3 "list tree style
+let g:netrw_banner=0    "disable top banner
 
 let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#tab_min_count=2	"show only if more than a tab is open
-let g:airline#extensions#tabline#tab_nr_type=1		"show tab number (instead of splits count)
-let g:airline#extensions#tabline#show_buffers=0		"don't show buffer bar
-let g:airline#extensions#tabline#show_splits=0		"don't show splits bar
-let g:airline#extensions#tabline#show_tab_type=0	"don't show the type (only tabs are enabled)
-let g:airline#extensions#tabline#show_close_button=0	"don't show close button
+let g:airline#extensions#tabline#tab_min_count=2     "show only if more than a tab is open
+let g:airline#extensions#tabline#tab_nr_type=1       "show tab number (instead of splits count)
+let g:airline#extensions#tabline#show_buffers=0      "don't show buffer bar
+let g:airline#extensions#tabline#show_splits=0       "don't show splits bar
+let g:airline#extensions#tabline#show_tab_type=0     "don't show the type (only tabs are enabled)
+let g:airline#extensions#tabline#show_close_button=0 "don't show close button
 
 " make * and # work in visual mode
 function! s:VSetSearch(cmdtype)
