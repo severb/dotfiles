@@ -73,13 +73,9 @@ ZSH_THEME="sever"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump vi-mode common-aliases httpie gitfast)
+plugins=(autojump vi-mode common-aliases httpie gitfast fzf)
 
 source $ZSH/oh-my-zsh.sh
-
-# TODO: add fzf to the plugin list after
-# https://github.com/robbyrussell/oh-my-zsh/pull/8001/files lands
-source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 # User configuration
 
