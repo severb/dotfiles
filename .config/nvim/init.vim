@@ -11,8 +11,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 Plug 'majutsushi/tagbar'
 
 Plug 'autozimu/LanguageClient-neovim', {
@@ -121,6 +119,7 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'c': ['clangd-8'],
     \ 'cpp': ['clangd-8'],
+    \ 'go': ['gopls'],
     \ }
 
 augroup LanguageClient_config
