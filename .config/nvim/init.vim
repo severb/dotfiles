@@ -18,6 +18,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
+Plug 'RRethy/vim-illuminate'
+
 call plug#end()
 
 let mapleader = " "
@@ -30,7 +32,9 @@ let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 let g:onedark_terminal_italics = 1
 " colorscheme OceanicNext
-colorscheme onedark
+" colorscheme onedark
+colorscheme xor
+let g:airline_theme='onedark'
 
 set splitright            "open vertical splits on the right
 set splitbelow            "open horizontal splits below
@@ -41,6 +45,7 @@ set smartcase             "case sensitive search when uppercase chars are used
 set nowrap                "don't wrap lines
 set clipboard=unnamedplus "copy to CLIPBOARD
 set mouse=a               "enable mouse in all modes
+set colorcolumn=80        "show 80 columns limit
 
 let g:netrw_liststyle=3 "list tree style
 let g:netrw_banner=0    "disable top banner
