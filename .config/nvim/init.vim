@@ -23,6 +23,7 @@ Plug 'RRethy/vim-illuminate'
 call plug#end()
 
 let mapleader = " "
+inoremap jk <esc>
 
 " include highlight clear in redraw
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
@@ -124,8 +125,8 @@ let g:go_highlight_generate_tags = 1
 
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'c': ['clangd-8'],
-    \ 'cpp': ['clangd-8'],
+    \ 'c': ['clangd'],
+    \ 'cpp': ['clangd'],
     \ 'go': ['gopls'],
     \ }
 
@@ -136,7 +137,7 @@ augroup LanguageClient_config
     autocmd User LanguageClientStopped setlocal signcolumn=auto
     autocmd User LanguageClientStopped setlocal formatexpr=""
 augroup END
-let g:LanguageClient_useVirtualText = 1
+let g:LanguageClient_useVirtualText = "All"
 let g:LanguageClient_completionPreferTextEdit = 1
 let g:LanguageClient_hoverPreview = "Always"
 nnoremap K :call LanguageClient_contextMenu()<CR>
