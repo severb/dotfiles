@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/Users/sever'
+let g:netrw_dirhist_3='/Users/sever/.config/nvim/colors'
+let g:netrw_dirhist_2='/Users/sever'
+let g:netrw_dirhist_1='/Users/sever/go/src/github.com/BurntSushi/toml'
+let g:netrw_dirhist_0='/Users/sever/go/src/github.com/BurntSushi'
+let g:netrw_dirhist_9='/Users/sever/go/src/github.com'
+let g:netrw_dirhist_8='/Users/sever/go/src'
+let g:netrw_dirhist_7='/Users/sever/go'
+let g:netrw_dirhist_6='/Users/sever'
+let g:netrw_dirhist_5='/Users/sever/proj/c/clox'
