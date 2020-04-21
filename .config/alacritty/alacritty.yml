@@ -127,10 +127,10 @@ font:
     #family: monospace
 
     # The `style` can be specified to pick a specific face.
-    style: Bold
+    style: Extra Bold
 
   # Italic font face
-  #italic:
+  italic:
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
@@ -152,13 +152,15 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 16.0
+  size: 14
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   #offset:
   #  x: 0
   #  y: 0
+  offset:
+    y: 2
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
@@ -166,6 +168,9 @@ font:
   #glyph_offset:
   #  x: 0
   #  y: 0
+  glyph_offset:
+    y: 1
+
 
   # Thin stroke font rendering (macOS only)
   #
