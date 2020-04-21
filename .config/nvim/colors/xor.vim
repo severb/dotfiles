@@ -5,45 +5,70 @@ if exists("syntax_on")
 endif
 let g:colors_name = "xor"
 
-hi Normal       guifg=#a9afbc   guibg=none      gui=none
-hi! link NonText        Normal
-hi! link Identifier     Normal
-hi! link PreProc        Normal
-hi! link Type           Normal
-hi! link Special        Normal
-hi! link Constant       Normal
+let s:bgn="#242325"
+let s:bga="#333134"
+let s:acc="#FED766"
+let s:fgn="#A09FA0"
+let s:fga="#7A7C84"
 
-hi Cursor       guifg=none      guibg=none      gui=reverse
-hi! link TermCursor     Cursor
 
-hi Visual       guifg=none      guibg=none      gui=reverse
-hi Todo         guifg=#e5c07b   guibg=none      gui=bold
-hi! link MatchParen Todo
-hi Error        guifg=#e06c75   guibg=none      gui=none
-hi Underlined   guifg=none      guibg=none      gui=underline
-hi Comment      guifg=#d4d7de   guibg=none      gui=italic
-hi Statement    guifg=#7d879b   guibg=none      gui=none
-hi! link LineNr Statement
-hi CursorLineNr guifg=#7d879b   guibg=none      gui=bold
+function s:hili(group, guifg, guibg, guisp, gui)
+    exec "hi " . a:group . " guifg=" . a:guifg . " guibg=" . a:guibg . " guisp=" . a:guisp . " gui=" . a:gui
+endfunction
 
-hi VertSplit    guifg=#2c313a   guibg=#2c313a   gui=none
-hi CursorLine   guifg=none      guibg=#2c313a   gui=none
-hi! link ColorColumn    CursorLine
-hi! link CursorColumn   CursorLine
+call	s:hili("Normal",	s:fgn,	s:bgn,	"none",	"none")
+call	s:hili("NormalNC",	"none",	"none",	"none",	"none")
+call	s:hili("Cursor",	"none",	"none",	"none",	"reverse")
+call	s:hili("CursorLine",	"none",	s:bga,	"none",	"none")
+call	s:hili("CursorColumn",	"none",	s:bga,	"none",	"none")
+call	s:hili("VertSplit",	s:bga,	s:bga,	"none",	"none")
+call	s:hili("LineNr",	s:bga,	s:bgn,	"none",	"none")
+call	s:hili("CursorLineNr",	s:bgn,	s:bga,	"none",	"none")
+call	s:hili("Visual",	"none",	s:bga,	"none",	"none")
+call	s:hili("MatchParen",	"none",	"none",	"none",	"underline")
+call	s:hili("NonText",	s:bga,	"none",	"none",	"none")
+call	s:hili("IncSearch",	s:acc,	"none",	"none",	"reverse")
+call	s:hili("Search",	s:acc,	"none",	"none",	"reverse")
+call	s:hili("SpellBad",	"none",	"none",	s:acc,	"undercurl")
+call	s:hili("Whitespace",	s:bga,	"none",	"none",	"bold")
+call	s:hili("Directory",	s:fga,	"none",	"none",	"none")
+call	s:hili("ColorColumn",	"none",	s:bga,	"none",	"none")
+call	s:hili("MsgArea",	"none",	"none",	"none",	"none")
+call	s:hili("ErrorMsg",	s:acc,	"none",	"none",	"none")
+call	s:hili("WarningMsg",	s:fga,	"none",	"none",	"none")
+call	s:hili("Folded",	"none",	s:bga,	"none",	"italic")
+call	s:hili("QuickFixLine",	"none",	"none",	"none",	"reverse")
 
-hi Search       guifg=#282c34   guibg=#e5c07b   gui=none
-hi! link IncSearch      Search
+call	s:hili("Pmenu",	"none",	s:bga,	"none",	"none")
+call	s:hili("PmenuSel",	"none",	"none",	"none",	"reverse")
+call	s:hili("PmenuThumb",	"none",	s:bga,	"none",	"none")
+call	s:hili("PmenuSbar",	"none",	s:bgn,	"none",	"none")
 
-hi Pmenu        guifg=#a9afbc   guibg=#373d48   gui=none
-hi! link PmenuSbar Pmenu
-hi PmenuThumb   guifg=none      guibg=#21252b   gui=none
-hi PmenuSel     guifg=none      guibg=#21252b   gui=none
+call	s:hili("Comment",	s:fga,	"none",	"none",	"italic")
+call	s:hili("Constant",	s:fga,	"none",	"none",	"italic")
+call	s:hili("Identifier",	s:fga,	"none",	"none",	"none")
+call	s:hili("Statement",	"none",	"none",	"none",	"bold")
+call	s:hili("PreProc",	"none",	"none",	"none",	"bold,italic")
+call	s:hili("Type",	"none",	"none",	"none",	"bold")
+call	s:hili("Special",	s:fga,	"none",	"none",	"italic")
+call	s:hili("Underlined",	"none",	"none",	"none",	"underline")
+call	s:hili("Todo",	s:acc,	"none",	"none",	"italic")
+call	s:hili("Error",	s:acc,	"none",	"none",	"reverse")
 
-hi Whitespace   guifg=#596273   guibg=none      gui=none
+call	s:hili("LspDiagnosticsError",	s:acc,	"none",	"none",	"italic")
+call	s:hili("LspDiagnosticsWarning",	s:bgn,	s:bga,	"none",	"italic")
+call	s:hili("LspDiagnosticsInformation",	s:bga,	"none",	"none",	"italic")
+call	s:hili("LspDiagnosticsHint",	s:bga,	"none",	"none",	"italic")
 
-hi SpellBad     guifg=#e06c75   guibg=none      gui=undercurl   guisp=#e06c75
-hi! link SpellCap SpellBad
-hi! link SpellLocal SpellBad
-hi! link SpellRare SpellBad
+call	s:hili("DiffAdd",	s:fga,	s:bga,	"none",	"none")
+call	s:hili("DiffChange",	"none",	"none",	"none",	"none")
+call	s:hili("DiffDelete",	s:bgn,	s:bga,	"none",	"none")
+call	s:hili("DiffText",	"none",	s:bga,	"none",	"none")
 
-hi illuminatedWord guifg=none   guibg=none      gui=underline
+
+""" extensions
+
+" fugitive
+call	s:hili("gitDiff",	"none",	"none",	"none",	"none")
+call	s:hili("diffAdded",	s:fga,	s:bga,	"none",	"none")
+call	s:hili("diffRemoved",	s:bgn,	s:bga,	"none",	"none")
