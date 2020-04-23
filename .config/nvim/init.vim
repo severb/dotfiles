@@ -32,9 +32,11 @@ set nowrap                "don't wrap lines
 set clipboard=unnamedplus "copy to CLIPBOARD
 set mouse=a               "enable mouse in all modes
 set colorcolumn=80        "show 80 columns limit
+set updatetime=100        "typing pause for swap file and CusorHold event, used by gitgutter
 
-let g:netrw_liststyle=3 "list tree style
-let g:netrw_banner=0    "disable top banner
+let g:netrw_liststyle=3  "list tree style
+let g:netrw_dirhistmax=0 "don't keep a history
+let g:netrw_banner=0     "disable top banner
 
 " make * and # work in visual mode
 function! s:VSetSearch(cmdtype)
@@ -97,14 +99,18 @@ LSPCFG
 
 " LSP config
 set completeopt-=preview " disable Preview Window on autocomplete
-autocmd Filetype c setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
-nnoremap <silent> <leader>d <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> <leader>D <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> <leader>k <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> <leader>i <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> gd        <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gD        <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> K         <cmd>lua vim.lsp.buf.hover()<CR>
+" nnoremap <silent> <leader>i <cmd>lua vim.lsp.buf.implementation()<CR>
 inoremap <silent> <c-k>     <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> <leader>r <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> <leader>R <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> <leader>0 <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> <leader>o <cmd>lua vim.lsp.buf.formatting()<CR>
+
+" Lang configs
+autocmd FileType c setlocal shiftwidth=2 softtabstop=-1 expandtab
+autocmd Filetype c setlocal omnifunc=v:lua.vim.lsp.omnifunc
+autocmd Filetype c setlocal formatexpr=v:lua.vim.lsp.buf.range_formatting() "Y U no work?
