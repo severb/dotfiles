@@ -1,8 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'neovim/nvim-lsp'
-Plug 'joshdick/onedark.vim'
-Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -20,7 +18,6 @@ let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 let g:onedark_terminal_italics = 1
 colorscheme xor
-let g:airline_theme='onedark'
 
 set splitright            "open vertical splits on the right
 set splitbelow            "open horizontal splits below

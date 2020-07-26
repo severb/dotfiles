@@ -1,10 +1,10 @@
 [user]
-	name = Sever Banesiu
-	email = banesiu.sever@gmail.com
+    name = Sever Banesiu
+    email = banesiu.sever@gmail.com
 [branch]
-	autosetuprebase = always
+    autosetuprebase = always
 [rerere]
-	enabled = true
+    enabled = true
 
 [color]
     ui = always# :wqauto
@@ -28,7 +28,8 @@
 
 [core]
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	editor = nvim
+    editor = nvim
+    untrackedCache = true
 
 [alias]
     changes = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --date-order
