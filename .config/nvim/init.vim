@@ -108,6 +108,12 @@ nnoremap <silent> <leader>0 <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> <leader>o <cmd>lua vim.lsp.buf.formatting()<CR>
 
 " Lang configs
-autocmd FileType c setlocal shiftwidth=2 softtabstop=-1 expandtab
-autocmd Filetype c setlocal omnifunc=v:lua.vim.lsp.omnifunc
-autocmd Filetype c setlocal formatexpr=v:lua.vim.lsp.buf.range_formatting() "Y U no work?
+autocmd FileType c,cpp setlocal shiftwidth=2 softtabstop=-1 expandtab
+autocmd Filetype c,cpp setlocal omnifunc=v:lua.vim.lsp.omnifunc
+autocmd Filetype c,cpp setlocal formatexpr=v:lua.vim.lsp.buf.range_formatting() "Y U no work?
+
+" briefly highlight yanked text
+augroup LuaHighlight
+  autocmd!
+  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+augroup END

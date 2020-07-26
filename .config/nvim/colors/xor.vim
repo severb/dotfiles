@@ -78,6 +78,7 @@ function s:setup(fgn, fga, acc, bgn, bga)
 	call	s:hili("Underlined",	"none",	"none",	"none",	"underline")
 	call	s:hili("Todo",	a:acc,	"none",	"none",	"italic")
 	call	s:hili("Error",	a:bgn,	a:acc,	"none",	"none")
+	call	s:hili("SignColumn",	"none",	"none",	"none",	"none")
 
 	call	s:hili("LspDiagnosticsError",	a:bga,	a:acc,	"none",	"italic")
 	call	s:hili("LspDiagnosticsWarning",	a:acc,	"none",	"none",	"italic")
@@ -91,6 +92,10 @@ function s:setup(fgn, fga, acc, bgn, bga)
 
 
 	""" extensions
+	"git gutter
+	call	s:hili("GitGutterAdd",	a:acc,	"none",	"none",	"none")
+	call	s:hili("GitGutterChange",	a:acc,	"none",	"none",	"none")
+	call	s:hili("GitGutterDelete",	a:acc,	"none",	"none",	"none")
 
 	" fugitive
 	call	s:hili("gitDiff",	"none",	"none",	"none",	"none")
