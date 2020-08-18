@@ -90,12 +90,15 @@ function s:setup(fgn, fga, acc, bgn, bga)
 	call	s:hili("DiffDelete",	a:bgn,	a:bga,	"none",	"none")
 	call	s:hili("DiffText",	"none",	a:bga,	"none",	"none")
 
+	call	s:hili("TabLine",	a:fgn,	a:bga,	"none",	"none")
+	call	s:hili("TabLineFill",	a:fgn,	a:bga,	"none",	"none")
+	call	s:hili("TabLineSel",	a:fga,	a:bgn,	"none",	"none")
 
 	""" extensions
 	"git gutter
-	call	s:hili("GitGutterAdd",	a:acc,	"none",	"none",	"none")
-	call	s:hili("GitGutterChange",	a:acc,	"none",	"none",	"none")
-	call	s:hili("GitGutterDelete",	a:acc,	"none",	"none",	"none")
+	call	s:hili("GitGutterAdd",	a:bga,	"none",	"none",	"none")
+	call	s:hili("GitGutterChange",	a:bga,	"none",	"none",	"none")
+	call	s:hili("GitGutterDelete",	a:bga,	"none",	"none",	"none")
 
 	" fugitive
 	call	s:hili("gitDiff",	"none",	"none",	"none",	"none")
