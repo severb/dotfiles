@@ -6,6 +6,15 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/diagnostic-nvim'
+
+
+Plug 'arcticicestudio/nord-vim'
+Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
+Plug 'haishanh/night-owl.vim'
+
 call plug#end()
 
 let mapleader = " "
@@ -14,9 +23,24 @@ let mapleader = " "
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 set termguicolors
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
+
+" nord theme settings
+let g:nord_bold = 1
+let g:nord_italic = 1
+let g:nord_underline = 1
+let g:nord_italic_comments = 1
+let g:nord_cursor_line_number_background = 1
+let g:nord_uniform_diff_background = 1
+
+"onedark theme settings
 let g:onedark_terminal_italics = 1
+
+"gruvbox theme settigs
+let g:gruvbox_bold = 1
+let g:gruvbox_italic = 1
+let g:gruvbox_underline = 1
+let g:gruvbox_undercurl = 1
+
 colorscheme xor
 
 set splitright            "open vertical splits on the right
@@ -45,6 +69,9 @@ endfunction
 
 xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+
+" Use ctrl-c to exit insert mode
+inoremap <C-c> <Esc>
 
 function! SearchVisualSelectionWithRg() range
   let old_reg = getreg('"')
@@ -88,28 +115,42 @@ if executable("rg")
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 endif
 
+" completion-nvim config
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
+
+" diagnostic-nvim config
+let g:diagnostic_virtual_text_prefix = ''
+let g:space_before_virtual_text = 0
+let g:diagnostic_enable_virtual_text = 1
+let g:diagnostic_insert_delay = 1
+
+"lua require'nvim_lsp'.clangd.setup{}
 lua << LSPCFG
 
-  require'nvim_lsp'.clangd.setup{}
+local on_attach = function()
+  require'completion'.on_attach()
+  require'diagnostic'.on_attach()
+end
+
+require'nvim_lsp'.clangd.setup{on_attach=on_attach}
 
 LSPCFG
 
 " LSP config
-set completeopt-=preview " disable Preview Window on autocomplete
 
 nnoremap <silent> gd        <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gD        <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> K         <cmd>lua vim.lsp.buf.hover()<CR>
-" nnoremap <silent> <leader>i <cmd>lua vim.lsp.buf.implementation()<CR>
 inoremap <silent> <c-k>     <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> <leader>r <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> <leader>R <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> <leader>0 <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> <leader>o <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> <leader>O <cmd>ClangdSwitchSourceHeader<CR>
 
 " Lang configs
 autocmd FileType c,cpp setlocal shiftwidth=2 softtabstop=-1 expandtab
-autocmd Filetype c,cpp setlocal omnifunc=v:lua.vim.lsp.omnifunc
 autocmd Filetype c,cpp setlocal formatexpr=v:lua.vim.lsp.buf.range_formatting() "Y U no work?
 
 " briefly highlight yanked text
