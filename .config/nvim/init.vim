@@ -134,6 +134,7 @@ local on_attach = function()
 end
 
 require'nvim_lsp'.clangd.setup{on_attach=on_attach}
+require'nvim_lsp'.rust_analyzer.setup{on_attach=on_attach}
 
 LSPCFG
 

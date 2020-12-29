@@ -4,7 +4,7 @@ if [ -z ${GOPATH+x} ]; then
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.local/bin:$HOME/bin/:$PATH:/usr/local/bin:$GOPATH/bin:$HOME/.cargo/bin
+export PATH=$HOME/.local/bin:$HOME/bin/:$PATH:/usr/local/bin:$GOPATH/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
