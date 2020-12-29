@@ -1,4 +1,6 @@
 set editing-mode vi
+set completion-ignore-case on
+set bell-style none
 
 set keymap vi-insert
 Control-l: clear-screen
