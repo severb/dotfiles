@@ -1,19 +1,13 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'neovim/nvim-lsp'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/diagnostic-nvim'
-
-
-Plug 'arcticicestudio/nord-vim'
-Plug 'joshdick/onedark.vim'
-Plug 'morhetz/gruvbox'
-Plug 'haishanh/night-owl.vim'
+Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
 
@@ -23,23 +17,6 @@ let mapleader = " "
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 set termguicolors
-
-" nord theme settings
-let g:nord_bold = 1
-let g:nord_italic = 1
-let g:nord_underline = 1
-let g:nord_italic_comments = 1
-let g:nord_cursor_line_number_background = 1
-let g:nord_uniform_diff_background = 1
-
-"onedark theme settings
-let g:onedark_terminal_italics = 1
-
-"gruvbox theme settigs
-let g:gruvbox_bold = 1
-let g:gruvbox_italic = 1
-let g:gruvbox_underline = 1
-let g:gruvbox_undercurl = 1
 
 colorscheme xor
 
@@ -115,47 +92,68 @@ if executable("rg")
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 endif
 
-" completion-nvim config
-set completeopt=menuone,noinsert,noselect
-set shortmess+=c
-
-" diagnostic-nvim config
-let g:diagnostic_virtual_text_prefix = ''
-let g:space_before_virtual_text = 0
-let g:diagnostic_enable_virtual_text = 1
-let g:diagnostic_insert_delay = 1
-
-"lua require'nvim_lsp'.clangd.setup{}
-lua << LSPCFG
-
-local on_attach = function()
-  require'completion'.on_attach()
-  require'diagnostic'.on_attach()
-end
-
-require'nvim_lsp'.clangd.setup{on_attach=on_attach}
-require'nvim_lsp'.rust_analyzer.setup{on_attach=on_attach}
-
-LSPCFG
-
-" LSP config
-
-nnoremap <silent> gd        <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gD        <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> K         <cmd>lua vim.lsp.buf.hover()<CR>
-inoremap <silent> <c-k>     <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> <leader>r <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent> <leader>R <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> <leader>0 <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> <leader>o <cmd>lua vim.lsp.buf.formatting()<CR>
-nnoremap <silent> <leader>O <cmd>ClangdSwitchSourceHeader<CR>
-
-" Lang configs
-autocmd FileType c,cpp setlocal shiftwidth=2 softtabstop=-1 expandtab
-autocmd Filetype c,cpp setlocal formatexpr=v:lua.vim.lsp.buf.range_formatting() "Y U no work?
-
 " briefly highlight yanked text
 augroup LuaHighlight
   autocmd!
   autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
+
+" completion-nvim config
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
+
+lua << LSPCFG
+local nvim_lsp = require('lspconfig')
+local completion = require('completion')
+
+local on_attach = function(client)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+    --Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<C-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+
+  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+
+  buf_set_keymap('n', 'grn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', 'gca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+  buf_set_keymap('n', 'ge', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', 'gq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+
+  buf_set_keymap('n', 'gwa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', 'gwr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', 'gwl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+
+  completion.on_attach()
+end
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = { 'clangd', 'rust_analyzer', 'gopls' }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    }
+  }
+end
+
+LSPCFG
+
+autocmd BufWritePre *.go lua vim.lsp.buf.formatting()
+
